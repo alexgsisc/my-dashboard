@@ -12,7 +12,6 @@ const getPokemons = async (
     id: pokemon.url.split("/")[6],
     name: pokemon.name,
   }));
-  throw new Error('is the error control')
   return pokemons;
 };
 export default async function PokemonsPage() {
