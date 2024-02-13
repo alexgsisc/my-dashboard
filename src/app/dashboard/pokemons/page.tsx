@@ -1,7 +1,7 @@
 import { PokemonGrid, PokemonSimple, PokemonsResponse } from "@/pokemons";
 
 const getPokemons = async (
-  limit = 10,
+  limit = 30,
   offset = 0
 ): Promise<PokemonSimple[]> => {
   const data: PokemonsResponse = await fetch(
@@ -15,7 +15,7 @@ const getPokemons = async (
   return pokemons;
 };
 export default async function PokemonsPage() {
-  const pokemons = await getPokemons(150);
+  const pokemons = await getPokemons(151);
   return (
     <div className="flex flex-col">
       <span className="text-5xl my-2">

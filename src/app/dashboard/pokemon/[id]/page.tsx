@@ -1,4 +1,5 @@
 import { Pokemon } from "@/pokemons";
+import exp from "constants";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -7,6 +8,23 @@ interface PokemonProps {
   params: {
     id: string;
   };
+}
+
+//generate page static at build time
+export async function generateStaticParams() {
+  const static151Pokemon = Array.from({ length: 151 }).map(
+    (v, index) => `${index + 1}`
+  );
+
+  return static151Pokemon.map((id) => ({ id: id }));
+
+  // return [
+  //   {id: "1",},
+  //   {id: "2",},
+  //   {id: "3",},
+  //   {id: "4",},
+  //   {id: "5",},
+  // ];
 }
 
 // Todo generate metadata dynamically
