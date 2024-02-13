@@ -48,7 +48,10 @@ export async function generateMetadata({
 const getPokemon = async (id: string): Promise<Pokemon> => {
   try {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-      cache: "force-cache",
+      //cache: "force-cache",
+      next: { 
+        revalidate: 60 * 60 * 24 //is time refresh info
+      },
     }).then((resp) => resp.json());
 
     console.log("Elemt is: ", res.name);
