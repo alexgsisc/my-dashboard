@@ -1,8 +1,12 @@
-'use client';
+"use client";
 import { useState } from "react";
 
-export const CartCounter = () => {
-  const [count, setCount] = useState(0);
+interface CarCunterProps {
+  value?: number;
+}
+
+export const CartCounter = ({ value = 0 }: CarCunterProps) => {
+  const [count, setCount] = useState(value);
 
   return (
     <>
