@@ -14,11 +14,20 @@ interface PokemonState {
   [key: string]: PokemonSimple;
 }
 
+//get pokemons from local storage
+const getPokemons = (): PokemonState => {
+  const pokemons = JSON.parse(
+    localStorage.getItem("favorite-pokemons") ?? "{}"
+  );
+  return pokemons;
+};
+
 const initialState: PokemonState = {
-  "1": { id: "1", name: "bulbasaur" },
-  "8": { id: "8", name: "wartortle" },
-  "25": { id: "25", name: "pikachu" },
-  "132": { id: "132", name: "ditto" },
+  ...getPokemons(),
+  // "1": { id: "1", name: "bulbasaur" },
+  // "8": { id: "8", name: "wartortle" },
+  // "25": { id: "25", name: "pikachu" },
+  // "132": { id: "132", name: "ditto" },
 };
 
 const pokemonsSlice = createSlice({
@@ -33,6 +42,8 @@ const pokemonsSlice = createSlice({
       } else {
         state[id] = { id, name };
       }
+      //todo bad practice to save in local storage in Redux
+      localStorage.setItem("favorite-pokemons", JSON.stringify(state));
     },
   },
 });
