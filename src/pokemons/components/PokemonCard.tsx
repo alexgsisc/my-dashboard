@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PokemonSimple } from "..";
 import Image from "next/image";
-import { IoHeartOutline } from "react-icons/io5";
+import { CardFavorite } from "./CardFavorite";
 
 interface PokemonCardProps {
   pokemon: PokemonSimple;
@@ -18,7 +18,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
             width={100}
             height={100}
             alt={name}
-            priority = {false}
+            priority={false}
           />
           <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">
             {name}
@@ -26,28 +26,13 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
           <div className="mt-5">
             <Link
               href={`pokemons/${name}`}
-             className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100">
+              className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100"
+            >
               Show more...
             </Link>
           </div>
         </div>
-        <div className="border-b">
-          <Link
-            href="/dashboard/main"
-            className="px-4 py-2 hover:bg-gray-100 flex"
-          >
-            <div className="text-red-600">
-              <IoHeartOutline />
-            </div>
-            <div className="pl-3">
-              <p className="text-sm font-medium text-gray-800 leading-none">
-                Not favorite
-              </p>
-              <p className="text-xs text-gray-500">View your campaigns</p>
-            </div>
-          </Link>
-         
-        </div>
+        <CardFavorite pokemon={pokemon}/>
       </div>
     </div>
   );
