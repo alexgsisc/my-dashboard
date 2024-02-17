@@ -10,13 +10,12 @@ interface CardFavoriteProps {
 
 export const CardFavorite = ({ pokemon }: CardFavoriteProps) => {
   const { id, name } = pokemon;
-  const isFavorite = useAppSelector((state) => !!state.pokemons[id]);
+  const isFavorite = useAppSelector( state => !!state.pokemons.favorites[id] );
   const dispatch = useAppDispatch();
 
   const onToggleFavorite = () => {
-    console.log("onToggleFavorite", pokemon);
-    dispatch(toggleFavorite(pokemon));
-  };
+    dispatch( toggleFavorite(pokemon) );
+  }
 
   return (
     <div className="border-b">

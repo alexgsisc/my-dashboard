@@ -11,15 +11,17 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
   const { id, name } = pokemon;
   return (
     <div className="mx-auto right-0 mt-2 w-60">
-      <div className="bg-white rounded overflow-hidden shadow-lg">
+      <div className="flex flex-col bg-white rounded overflow-hidden shadow-lg">
         <div className="flex flex-col items-center justify-center text-center p-6 bg-gray-800 border-b">
           <Image
+            key={pokemon.id}
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
             width={100}
             height={100}
-            alt={name}
+            alt={pokemon.name}
             priority={false}
           />
+
           <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">
             {name}
           </p>
@@ -32,7 +34,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
             </Link>
           </div>
         </div>
-        <CardFavorite pokemon={pokemon}/>
+        <CardFavorite key={pokemon.id} pokemon={pokemon} />
       </div>
     </div>
   );
